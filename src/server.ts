@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import requestRoutes from "./routes/requestRoutes.js"
+import contactRoutes from "./routes/contactRoutes.js"
 
 
 dotenv.config();
@@ -30,6 +31,7 @@ app.listen(PORT,()=>{
 })
 
 app.use("/api/requests",requestRoutes);
+app.use("/api/contacts",contactRoutes);
 
 
 
