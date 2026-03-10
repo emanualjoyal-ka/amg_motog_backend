@@ -1,10 +1,17 @@
 import { Request, Response } from "express";
 import contactSchema from "../models/contactSchema.js";
+import { contactValidation } from "../validations/contactValidation.js";
 
 
 
 export const createContact=async (req:Request,res:Response)=>{
     try {
+
+        const {error}=contactValidation.validate(req.body);
+        if(error){
+            return res.status(400).json({message:error.details[0].message})
+        }
+
         const {name,email,subject,message}=req.body;
 
         if(!name || !email || !subject || !message){

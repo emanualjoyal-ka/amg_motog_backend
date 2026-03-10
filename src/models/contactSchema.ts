@@ -3,11 +3,11 @@ import mongoose, { Document } from "mongoose";
 export interface Contact extends Document{
     name:string;
     email:string;
-    subject:string,
-    message:string
+    subject:string;
+    message:string;
 }
 
-const contactSchema=new mongoose.Schema({
+const contactSchema=new mongoose.Schema<Contact>({
     name:{
         type:String,
         required:true,
